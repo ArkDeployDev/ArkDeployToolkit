@@ -1,62 +1,90 @@
-# 🛠️ ArkDeploy: Windows Image Deployment Toolkit
+# 🛠️ ArkDeploy: Windows Deployment Toolkit
 
-A streamlined solution for creating bootable USB drives that lets you deploy Windows images directly to a PC—without relying on the Microsoft setup application. The toolkit also allows for image capture for backup and mass deployment scenarios. Windows images can be stored locally on the USB drive or accessed over a network via SMB shares.
+A streamlined solution for creating bootable USB drives that lets you deploy Windows images directly to a PC without relying on the Microsoft setup application. Built entirely in PowerShell and leveraging Windows Preinstallation Environment (Windows PE), the toolkit also supports image capture for backup and mass deployment scenarios. Windows images can be stored locally on the USB drive or accessed over a network via SMB shares.
 
-## 🚀 Why Use This Toolkit?
+---
 
-Whether you're a power user or managing dozens of machines, this toolkit simplifies and accelerates Windows deployment and Capture.
+## 📚 Table of Contents
+- [Why Use This Toolkit?](#-why-use-this-toolkit)
+- [Personal Use](#-personal-use)
+- [Business\Educational Use](#-businesseducational-use)
+- [Features](#-features)
+- [Ideal For](#-ideal-for)
+- [Requirements](#-requirements)
+- [Documentation](#-documentation)
+
+---
+
+## 🧠 Why Use This Toolkit?
+
+Whether you're a power user, IT admin, or educator, this toolkit simplifies the process of building a customized Windows PE boot drive. Written in PowerShell and designed to be fully moddable, it offers a clean, maintainable foundation for personalized deployments, system recovery, or mass imaging workflows.
+
 
 ---
 
 ## 👤 Personal Use
 
-- **Rapid System Recovery**  
-  After configuring your system, create a full image—including drivers and applications—and store it on a USB drive or network share. Reimage your PC in minutes, not hours.
-
-- **Bypass Hardware Restrictions**  
-  Install Windows 11 on unsupported hardware by skipping the standard setup process.
+- Create a bootable USB with your preferred Windows version  
+- Slipstream updates, drivers, and tweaks  
+- Automate setup with answer files (coming soon) 
+- Avoid bloat and unwanted OEM software
 
 ---
 
 ## 🏢 Business\Educational Use
 
-- **Mass Deployment Made Simple**  
-  Deploy Windows images across multiple machines without the complexity of enterprise tools like SCCM.
+- Standardize deployments across machines  
+- Integrate domain join, policies, and provisioning packages  
+- Save time with repeatable, documented processes  
+- Reduce support overhead with clean installs
 
 ---
 
-## 📦 Features
+## ✨ Features
 
-- Bootable USB creation
-- Image-based deployment
-- No dependency on Windows Setup
-
----
-
-## 💡 Ideal For
-
-- IT professionals
-- System builders
-- Power users
-- Small businesses
-- Educational institutions
+- Modular PowerShell scripts with verbose logging  
+- Support for `.wim` and `.esd` images  
+- Optional driver and update integration  
+- Answer file automation  
+- USB formatting and bootloader setup  
+- Clean, readable code with comments and error handling
 
 ---
 
-## 🧰 Requirements
+## 🎯 Ideal For
 
-- Windows image file (.wim or .esd)
-- USB drive (8GB or larger)
-- Basic command-line knowledge
-- PowerShell 5.1 or later
-- Administrator privileges
-- Windows ADK with Windows PE add-on
-- Windows LCU (optional)
-- Drivers (optional)
+- IT professionals  
+- System builders  
+- Educators managing labs  
+- Enthusiasts who love clean installs
+
+---
+
+<details>
+  <summary>🧰 Requirements</summary>
+
+  - Windows image file (.wim or .esd)  
+  - USB drive (8GB or larger)  
+  - Basic command-line knowledge  
+  - PowerShell 5.1 or later  
+  - Administrator privileges  
+  - Windows ADK with Windows PE add-on  
+  - Windows LCU (optional)  
+  - Drivers (optional)  
+</details>
 
 ---
 
 ## 📖 Documentation
 
-Coming soon! Stay tuned for setup instructions, usage examples, and troubleshooting tips.
+Setup instructions, usage examples, and troubleshooting tips coming soon!  
+Stay tuned or check the [docs folder](./docs) for updates.
 
+---
+
+## 🏷️ Badges
+
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
