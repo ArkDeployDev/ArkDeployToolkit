@@ -11,6 +11,7 @@ A streamlined solution for creating bootable USB drives that lets you deploy Win
 - [Features](#-features)
 - [Ideal For](#-ideal-for)
 - [Requirements](#-requirements)
+- [Releases](#-releases)
 - [Documentation](#-documentation)
 
 ---
@@ -79,6 +80,12 @@ Whether you're a power user, IT admin, or educator, this toolkit simplifies the 
 
 Setup instructions, usage examples, and troubleshooting tips coming soon!  
 Stay tuned or check the [docs folder](./docs) for updates.
+
+---
+
+## 📦 Releases
+
+The latest stable build and version history are available on the [Releases page](https://github.com/ArkDeployDev/ArkDeployToolkit/releases/latest).
 
 ---
 
