@@ -1,5 +1,9 @@
 # 🛠️ ArkDeploy: Windows Deployment Toolkit
 
+![GitHub Release](https://img.shields.io/github/v/release/ArkDeployDev/ArkDeployToolkit?include_prereleases&sort=date&display_name=release)
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 A streamlined solution for creating bootable USB drives that lets you deploy Windows images directly to a PC without relying on the Microsoft setup application. Built entirely in PowerShell and leveraging Windows Preinstallation Environment (Windows PE), the toolkit also supports image capture for backup and mass deployment scenarios. Windows images can be stored locally on the USB drive or accessed over a network via SMB shares.
 
 ---
@@ -89,9 +93,3 @@ The latest stable build and version history are available on the [Releases page]
 
 ---
 
-## 🏷️ Badges
-
-![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
