@@ -1,95 +1,138 @@
-# 🛠️ ArkDeploy: Windows Deployment Toolkit
+# ArkDeploy Toolkit
 
 ![GitHub Release](https://img.shields.io/github/v/release/ArkDeployDev/ArkDeployToolkit?include_prereleases&sort=date&display_name=release)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A streamlined solution for creating bootable USB drives that lets you deploy Windows images directly to a PC without relying on the Microsoft setup application. Built entirely in PowerShell and leveraging Windows Preinstallation Environment (Windows PE), the toolkit also supports image capture for backup and mass deployment scenarios. Windows images can be stored locally on the USB drive or accessed over a network via SMB shares.
+
+A clean, script-driven Windows deployment framework for people who want control, not magic.
+
+ArkDeploy Toolkit is a free, open-source Windows deployment solution built for engineers who want a transparent and repeatable way to deploy and capture Windows images without relying on Microsoft setup or heavyweight enterprise tooling.
+
+It provides a minimal Windows PE environment that deploys Windows images directly, using readable and extensible PowerShell workflows.
 
 ---
 
-## 📚 Table of Contents
-- [Why Use This Toolkit?](#-why-use-this-toolkit)
-- [Personal Use](#-personal-use)
-- [Business\Educational Use](#-businesseducational-use)
-- [Features](#-features)
-- [Ideal For](#-ideal-for)
-- [Requirements](#-requirements)
-- [Releases](#-releases)
-- [Documentation](#-documentation)
+## Why ArkDeploy Toolkit Exists
+
+Most Windows deployment solutions fall into one of two extremes:
+
+- Large enterprise platforms that are powerful but complex, heavy, and difficult to customise
+- Ad-hoc imaging workflows that work temporarily but are hard to reproduce, audit, or maintain
+
+ArkDeploy Toolkit is designed to sit in the middle.
+
+It focuses on clarity, repeatability, and control. Every deployment step is visible, script-driven, and modifiable.
+
+No setup.exe automation layers. No opaque wizards. No hidden behaviour.
 
 ---
 
-## 🧠 Why Use This Toolkit?
+## What the Toolkit Does
 
-Whether you're a power user, IT admin, or educator, this toolkit simplifies the process of building a customized Windows PE boot drive. Written in PowerShell and designed to be fully moddable, it offers a clean, maintainable foundation for personalized deployments, system recovery, or mass imaging workflows.
+ArkDeploy Toolkit creates a bootable Windows PE deployment environment that can:
 
+- Deploy Windows images in `.wim` or `.esd` format
+- Capture running systems into clean WIM images
+- Create bootable USB deployment media
+- Load images from local storage or SMB network shares
+- Execute modular, task-based PowerShell automation
 
----
-
-## 👤 Personal Use
-
-- Create a bootable USB with your preferred Windows version  
-- Slipstream updates, drivers, and tweaks  
-- Automate setup with answer files (coming soon) 
-- Avoid bloat and unwanted OEM software
+If you understand PowerShell, you can understand and extend the toolkit.
 
 ---
 
-## 🏢 Business\Educational Use
+## Key Capabilities
 
-- Standardize deployments across machines  
-- Integrate domain join, policies, and provisioning packages  
-- Save time with repeatable, documented processes  
-- Reduce support overhead with clean installs
+### Clean Windows Deployment
 
----
+- Direct image application from Windows PE
+- No Microsoft setup.exe
+- No OOBE processing when used with a custom `unattend.xml` file
 
-## ✨ Features
+### Image Deployment and Capture
 
-- Modular PowerShell scripts with verbose logging  
-- Support for `.wim` and `.esd` images  
-- Optional driver and update integration  
-- Answer file automation  
-- USB formatting and bootloader setup  
-- Clean, readable code with comments and error handling
+- Deploy custom or vendor-supplied WIM and ESD images
+- Capture reference systems into reusable golden images
+- Suitable for labs, rebuild workflows, and controlled environments
 
----
+### USB and Network Deployment
 
-## 🎯 Ideal For
+- Automated USB creation and preparation
+- SMB-based network image loading
+- No dependency on complex server infrastructure
 
-- IT professionals  
-- System builders  
-- Educators managing labs  
-- Enthusiasts who love clean installs
+### Modular PowerShell Architecture
 
----
-
-<details>
-  <summary>🧰 Requirements</summary>
-
-  - Windows image file (.wim or .esd)  
-  - USB drive (8GB or larger)  
-  - Basic command-line knowledge  
-  - PowerShell 5.1 or later  
-  - Administrator privileges  
-  - Windows ADK with Windows PE add-on  
-  - Windows LCU (optional)  
-  - Drivers (optional)  
-</details>
+- Task-based PowerShell modules
+- Easy to extend and customise
+- Designed to be forked and adapted
 
 ---
 
-## 📖 Documentation
+## Who This Is For
 
-Setup instructions, usage examples, and troubleshooting tips coming soon!  
-Stay tuned or check the [docs folder](./docs) for updates.
+- IT deployment administrators
+- System engineers
+- MSPs and system builders
+- Education IT teams
+- Homelab users who want full visibility into their tooling
+
+If you care about how Windows is deployed, this toolkit is designed for you.
 
 ---
 
-## 📦 Releases
+## What This Is and Is Not
 
-The latest stable build and version history are available on the [Releases page](https://github.com/ArkDeployDev/ArkDeployToolkit/releases/latest).
+**It is:**
+- A transparent, script-driven deployment framework
+- Lightweight and predictable
+- Designed for repeatable imaging workflows
+
+**It is not:**
+- A device management platform
+- A GUI-heavy enterprise suite
+- A post-deployment management solution
 
 ---
+
+## Getting Started
+
+Documentation and setup guidance can be found in the repository.
+
+At a high level, the workflow is:
+
+1. Build the Windows PE environment
+2. Create deployment media
+3. Deploy or capture Windows images
+4. Extend the workflow with custom PowerShell modules if required
+
+---
+
+## License
+
+ArkDeploy Toolkit is released under the MIT License.
+
+You are free to use, modify, and redistribute the toolkit.
+
+---
+
+## ArkDeploy Services
+
+ArkDeploy Toolkit is maintained as part of ArkDeploy’s professional Windows imaging and deployment services.
+
+If you need:
+- A fully serviced custom Windows image
+- A repeatable deployment workflow built for your environment
+- Help integrating the toolkit into production use
+
+You can use the toolkit independently or engage ArkDeploy services when you want to save time or reduce risk.
+
+---
+
+## Project Status
+
+The toolkit is actively maintained and used in real deployment workflows.
+
+Issues and contributions are welcome.
 
