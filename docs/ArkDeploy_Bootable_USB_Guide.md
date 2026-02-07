@@ -106,8 +106,8 @@ cd <ArkDeployToolkitDirectory>
 
 The script will:
 
--   Build the Windows PE environment\
--   Apply your configured settings\
+-   Build the Windows PE environment
+-   Apply your configured settings
 -   Create a bootable ISO file in the `BootImages` directory
 
 ------------------------------------------------------------------------
@@ -119,7 +119,7 @@ USB drive.
 
 You have two options:
 
--   Manually copy the ISO to a USB drive\
+-   Manually copy the ISO to a USB drive
 -   Let the toolkit create the USB automatically (**recommended**)
 
 ### Creating the USB Automatically
@@ -139,12 +139,12 @@ You will be prompted to choose how the USB drive is configured:
 
 ### Option 1 -- Single Partition
 
--   Small FAT32 boot partition\
+-   Small FAT32 boot partition
 -   Suitable for network-only deployments
 
 ### Option 2 -- Dual Partition (Recommended)
 
--   Small FAT32 boot partition\
+-   Small FAT32 boot partition
 -   Large NTFS partition for:
     -   WIM files
     -   Drivers
@@ -160,8 +160,8 @@ deployments.
 
 The script will:
 
--   Partition and format the USB drive\
--   Mount the ISO\
+-   Partition and format the USB drive
+-   Mount the ISO
 -   Copy all required files
 
 Once complete, you will have a fully bootable ArkDeploy Toolkit USB
