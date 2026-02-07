@@ -102,10 +102,9 @@ Documentation and setup guidance can be found in the repository.
 
 At a high level, the workflow is:
 
-1. Build the Windows PE environment
-2. Create deployment media
-3. Deploy or capture Windows images
-4. Extend the workflow with custom PowerShell modules if required
+1. [Creating a Bootable ArkDeploy Toolkit USB](/docs/ArkDeploy_Bootable_USB_Guide.md)
+2. Deploy or capture Windows images
+3. Extend the workflow with custom PowerShell modules if required
 
 ---
 
