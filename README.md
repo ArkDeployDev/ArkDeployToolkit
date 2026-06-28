@@ -12,6 +12,12 @@ It provides a minimal Windows PE environment that deploys Windows images directl
 
 ---
 
+## Toolkit in Action
+
+### Boot Media Builder
+
+![Boot Media Builder](https://arkdeploy.com/wp-content/uploads/2026/06/ArkDeploy-Toolkit.gif)
+
 ## Why ArkDeploy Toolkit Exists
 
 Most Windows deployment solutions fall into one of two extremes:
