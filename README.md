@@ -16,6 +16,8 @@ It provides a minimal Windows PE environment that deploys Windows images directl
 
 ### Boot Media Builder
 
+Create customized WinPE boot media as an ISO or bootable USB drive for Windows deployment and image capture.
+
 ![Boot Media Builder](docs/images/bootmedia.gif)
 
 ## Why ArkDeploy Toolkit Exists
