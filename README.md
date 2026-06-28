@@ -4,7 +4,6 @@
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-
 A clean, script-driven Windows deployment framework for people who want control, not magic.
 
 ArkDeploy Toolkit is a free, open-source Windows deployment solution built for engineers who want a transparent and repeatable way to deploy and capture Windows images without relying on Microsoft setup or heavyweight enterprise tooling.
