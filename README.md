@@ -111,7 +111,7 @@ Detailed setup documentation is available in the **docs** folder.
 Additional documentation, deployment guides and Windows imaging articles are available at:
 
 - https://arkdeploy.com/arkdeploy-toolkit/
-- https://arkdeploy.com/category/engineering/
+- https://arkdeploy.com/category/arkdeploy-toolkit/
 
 ---
 
