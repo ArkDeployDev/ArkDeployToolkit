@@ -120,7 +120,7 @@ Additional documentation, deployment guides and Windows imaging articles are ava
 Ideas for future improvements include:
 
 - Additional deployment automation
-- FFU (Full Flash Update) deployment support
+- FFU (Full Flash Update) deployment and capture support
 - SWM (Split WIM) deployment support
 - Driver injection workflows
 - Image validation tools
