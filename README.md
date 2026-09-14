@@ -120,6 +120,7 @@ Additional documentation, deployment guides and Windows imaging articles are ava
 Ideas for future improvements include:
 
 - Additional deployment automation
+- PXE Boot
 - FFU (Full Flash Update) deployment and capture support
 - SWM (Split WIM) deployment support
 - Driver injection workflows
