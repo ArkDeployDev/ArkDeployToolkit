@@ -17,6 +17,7 @@ Developed from real-world OEM Windows deployment experience, ArkDeploy Toolkit f
 - Deploy Windows images in **WIM** or **ESD** format
 - Capture existing Windows installations as **WIM** images
 - Create bootable **WinPE USB** or **ISO** deployment media
+- Optional **network/PXE boot** using the separate [ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/) project
 - Optional **unattend.xml** support
 - Deploy and capture images from **USB storage** or **SMB network** shares
 - Built entirely with **PowerShell**
@@ -35,7 +36,7 @@ Build bootable WinPE USB drives or ISO images in minutes. The toolkit automatica
 
 ### Boot into the Deployment Environment
 
-After creating your boot media, boot any UEFI-compatible device into ArkDeploy Toolkit. The lightweight Windows PE environment provides everything needed to deploy or capture Windows images, whether you're working from a local drive, USB storage, or an SMB network share.
+After creating your boot media, boot any UEFI-compatible device into ArkDeploy Toolkit. The same Toolkit-generated WinPE environment can boot from USB/ISO or over the network using the separate [ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/) project. The lightweight Windows PE environment provides everything needed to deploy or capture Windows images, whether you're working from a local drive, USB storage, or an SMB network share.
 
 ![Toolkit Menu](docs/images/ArkDeploy_Toolkit_menu.png)
 
@@ -96,13 +97,29 @@ If you care about how Windows is deployed, this toolkit is designed for you.
 At a high level, the workflow is:
 
 1. Create bootable WinPE media using the Boot Media Builder
-2. Boot the target device into ArkDeploy Toolkit
+2. Boot the target device into ArkDeploy Toolkit from USB/ISO, or optionally over the network using [ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/)
 3. Deploy or capture Windows images
 4. Extend the workflow with your own PowerShell modules if required
 
 Detailed setup documentation is available in the **docs** folder.
 
 - [Creating a Bootable ArkDeploy Toolkit USB](docs/ArkDeploy_Bootable_USB_Guide.md)
+
+---
+
+## Network Boot with ArkDeploy PXE
+
+[ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/) is a separate, complementary project: a lightweight PXE/TFTP server designed to work with ArkDeploy Toolkit. It allows Toolkit-generated Windows PE `boot.wim` environments to boot over the network instead of USB.
+
+The boot flow is:
+
+**PXE → iPXE → Windows PE → ArkDeploy Toolkit**
+
+Create your WinPE environment using the normal Boot Media Builder workflow, then use the generated `boot.wim` with ArkDeploy PXE for optional network boot. ArkDeploy PXE provides the network boot service; ArkDeploy Toolkit provides the deployment environment and handles deploying or capturing Windows images once Windows PE has loaded.
+
+ArkDeploy Toolkit **v1.1.1+** includes the embedded configuration fallback introduced in v1.1.1, allowing WinPE to operate when PXE booted without a USB-root configuration.
+
+See the [ArkDeploy PXE repository](https://github.com/ArkDeployDev/ArkDeployPXE/) for setup instructions and releases.
 
 ---
 
@@ -120,7 +137,6 @@ Additional documentation, deployment guides and Windows imaging articles are ava
 Ideas for future improvements include:
 
 - Additional deployment automation
-- PXE Boot
 - FFU (Full Flash Update) deployment and capture support
 - SWM (Split WIM) deployment support
 - Driver injection workflows
