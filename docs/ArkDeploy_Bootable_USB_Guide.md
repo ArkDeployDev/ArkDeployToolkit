@@ -44,7 +44,7 @@ Extract the ZIP file into a working directory.
 
 Before running the script, review and configure the toolkit settings.
 
-1.  Open `settings.json` in a text editor.
+1.  Open `config.json` in a text editor.
 2.  Review the following options:
 
 ### Key Settings Explained
@@ -83,7 +83,7 @@ settings section.
 > secure.\
 > Use only in trusted environments.
 
-Save `settings.json` once complete.
+Save `config.json` once complete.
 
 You are now ready to build your deployment image.
 
@@ -101,7 +101,7 @@ cd <ArkDeployToolkitDirectory>
 3.  Run the script:
 
 ``` powershell
-.\ArkDeployPE.ps1
+.\Build-WinPE.ps1
 ```
 
 The script will:
@@ -126,8 +126,8 @@ You have two options:
 
 Press **Y** when prompted.
 
-This launches the USB Drive Maker script.\
-(You can also run this script later to convert an existing ISO.)
+This launches the USB Drive Maker script (`Write-BootableUSB.ps1`).\
+(You can also run `.\Write-BootableUSB.ps1` standalone later to format and write an existing ISO.)
 
 > ⚠️ Insert a USB drive now --- all data on the drive will be erased.
 
@@ -146,7 +146,7 @@ You will be prompted to choose how the USB drive is configured:
 
 -   Small FAT32 boot partition
 -   Large NTFS partition for:
-    -   WIM files
+    -   Images (WIM, ESD, SWM, FFU)
     -   Drivers
     -   Tools
     -   Offline deployments
@@ -171,7 +171,7 @@ ready for deployment.
 
 ## Next Steps
 
--   Adding Images (.WIM or .ESD files)
+-   Adding Images (.WIM, .ESD, .SWM, or .FFU files)
 -   Adding an unattended.xml
 -   Network deployment walkthrough
 -   Capturing images

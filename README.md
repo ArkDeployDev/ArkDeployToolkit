@@ -4,9 +4,9 @@
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A lightweight Windows PE deployment toolkit for deploying and capturing Windows images using Microsoft's Deployment Image Servicing and Management (DISM).
+A lightweight Windows PE **Operating System Deployment (OSD)** toolkit for deploying and capturing Windows images using Microsoft's Deployment Image Servicing and Management (DISM).
 
-ArkDeploy Toolkit is a free, open-source Windows deployment toolkit designed for IT professionals who prefer simple, transparent imaging workflows over large enterprise deployment platforms.
+ArkDeploy Toolkit is a free, open-source Windows OSD toolkit designed for IT professionals who prefer simple, transparent imaging workflows over heavy enterprise deployment platforms.
 
 Developed from real-world OEM Windows deployment experience, ArkDeploy Toolkit focuses on simple, repeatable imaging workflows built on standard Microsoft deployment technologies.
 
@@ -14,11 +14,15 @@ Developed from real-world OEM Windows deployment experience, ArkDeploy Toolkit f
 
 ## Features
 
-- Deploy Windows images in **WIM** or **ESD** format
-- Capture existing Windows installations as **WIM** images
+- Deploy Windows images in **WIM**, **ESD**, **SWM**, or **FFU** format
+- Capture existing Windows installations as **WIM** images or full disks as **FFU** images
 - Create bootable **WinPE USB** or **ISO** deployment media
 - Optional **network/PXE boot** using the separate [ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/) project
-- Optional **unattend.xml** support
+- **Configurable Recovery Partition:** Interactive sizing defaulting to **1500 MB** (optimal for WinRE dynamic servicing updates), or option `[0]` to skip recovery
+- **4Kn Drive Compatibility:** Standardized **260 MB** EFI System Partition (ESP) ensuring full support for 4K Native and 512e drives
+- **Automation Support:** Script parameters (`-AutoConfirm`, `-NoPrompt`, `-DryRun`, `-RecoverySizeMB`) for headless and automated imaging
+- **Dual-Phase `unattend.xml` Support:** Automate both the **WinPE environment** (during media build) and the deployed **Windows OS** (Setup & OOBE automation during deployment)
+- **Companion Image Tools (`Tools/`):** Convert WIMs to split SWMs for FAT32 media and optimize FFUs for dynamic drive expansion
 - Deploy and capture images from **USB storage** or **SMB network** shares
 - Built entirely with **PowerShell**
 - Uses Microsoft's **DISM** deployment engine
@@ -30,7 +34,7 @@ Developed from real-world OEM Windows deployment experience, ArkDeploy Toolkit f
 
 ### Boot Media Builder
 
-Build bootable WinPE USB drives or ISO images in minutes. The toolkit automatically prepares your deployment environment so you can start deploying or capturing Windows images immediately.
+Build bootable WinPE USB drives or ISO images in minutes. The toolkit automatically prepares your deployment environment with optional drivers, updates, and WinPE unattend configuration so you can start deploying or capturing Windows images immediately.
 
 ![Boot Media Builder](docs/images/bootmedia.gif)
 
@@ -42,21 +46,30 @@ After creating your boot media, boot any UEFI-compatible device into ArkDeploy T
 
 ### Deploy Windows Image
 
-Use the **Deploy Image** option to select the target drive, choose the Windows image to deploy, and format the drive before deployment. Optional support for a custom **unattend.xml** file allows Windows Setup to be automated after the image is applied.
+Use the **Deploy Image** option to select the target drive, choose the Windows image to deploy (supporting **.wim**, **.esd**, **.swm**, and **.ffu** formats), and prepare the drive before deployment. Optional support for applying a custom Windows **unattend.xml** answer file allows Windows Setup and OOBE to be fully automated after the image is applied.
 
 ![Deploy Windows Image](docs/images/Apply_Wim.gif)
 
 ### Capture Windows Image
 
-Use the **Capture Image** option to create a Windows **.wim** image from an existing installation. Simply provide an image name and description. The captured image can then be reused for future deployments, creating consistent Windows installations for testing, rebuilding or large-scale deployment.
+Use the **Capture Image** option to create a Windows **.wim** image from an existing installation or capture a full physical drive as an **.ffu** image. Simply provide an image name and description. The captured image can then be reused for future deployments, creating consistent Windows installations for testing, rebuilding or large-scale deployment.
 
 ![Capture Windows Image](docs/images/Capture_Wim.gif)
 
 ---
 
+## Companion Image Tools
+
+Included in the `Tools/` folder of the release package, these PowerShell scripts run from an elevated technician workstation to prepare images before placing them on deployment shares or USB drives:
+
+- **Convert WIM to SWM (`Tools/Convert-WimToSwm.ps1`):** Splits large `.wim` files (> 4 GB) into multiple `.swm` parts so they can be stored and deployed from FAT32 USB partitions without hitting file size limits.
+- **Extend FFU Image (`Tools/Extend-FfuImage.ps1`):** Optimizes raw captured `.ffu` images via `DISM /Optimize-FFU` so the Windows partition automatically expands to fill 100% of any destination drive on deployment.
+
+---
+
 ## Why ArkDeploy Toolkit Exists
 
-After years of building and maintaining Windows images in OEM manufacturing environments, I wanted a deployment toolkit that focused on the fundamentals: capture, deploy and automate, without the complexity of enterprise deployment platforms.
+After years of building and maintaining Windows images in OEM manufacturing environments, I wanted an **OSD toolkit** that focused on the fundamentals: capture, deploy and automate, without the overhead of heavy enterprise platforms like SCCM/MECM or the legacy complexity of MDT.
 
 Rather than introducing additional infrastructure, ArkDeploy Toolkit builds on Microsoft's existing deployment technologies using readable PowerShell scripts that are easy to understand, modify and extend.
 
@@ -82,6 +95,7 @@ It intentionally avoids:
 
 ## Who This Is For
 
+- OSD engineers & desktop deployment specialists
 - IT deployment administrators
 - System engineers
 - MSPs and system builders
@@ -89,6 +103,17 @@ It intentionally avoids:
 - Homelab users 
 
 If you care about how Windows is deployed, this toolkit is designed for you.
+
+---
+
+## Requirements
+
+- PowerShell 5.1 or later (running as Administrator)
+- Windows Assessment and Deployment Kit (ADK) with the Windows PE add-on installed
+- Windows Cumulative Updates (MSUs in `Assets/WU/`, optional)
+- Hardware drivers (OEM drivers in `Assets/Drivers/`, optional)
+
+The latest Windows ADK and Windows PE add-on can be downloaded from [Microsoft ADK Documentation](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install).
 
 ---
 
@@ -123,6 +148,17 @@ See the [ArkDeploy PXE repository](https://github.com/ArkDeployDev/ArkDeployPXE/
 
 ---
 
+## Security Considerations
+
+> [!WARNING]
+> Server credentials configured for network share mapping are stored in plaintext in `config.json` and copied to the bootable media root directory.
+
+- **Dedicated Service Account:** Use a service account with minimal permissions (read/write access restricted solely to the deployment share).
+- **Network Isolation:** Deploy within trusted private VLANs or lab networks.
+- **Review Guidance:** See [SECURITY.md](SECURITY.md) for full security best practices, mitigations, and compliance considerations.
+
+---
+
 ## Documentation
 
 Additional documentation, deployment guides and Windows imaging articles are available at:
@@ -137,8 +173,8 @@ Additional documentation, deployment guides and Windows imaging articles are ava
 Ideas for future improvements include:
 
 - Additional deployment automation
-- FFU (Full Flash Update) deployment and capture support
-- SWM (Split WIM) deployment support
+- ~~FFU (Full Flash Update) deployment and capture support~~
+- ~~SWM (Split WIM) deployment support~~
 - Driver injection workflows
 - Image validation tools
 - Modular PowerShell extensions
