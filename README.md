@@ -36,13 +36,13 @@ Developed from real-world OEM Windows deployment experience, ArkDeploy Toolkit f
 
 Build bootable WinPE USB drives or ISO images in minutes. The toolkit automatically prepares your deployment environment with optional drivers, updates, and WinPE unattend configuration so you can start deploying or capturing Windows images immediately.
 
-![Boot Media Builder](docs/images/bootmedia.gif)
+![Boot Media Builder](docs/images/bootmedia.gif) 
 
 ### Boot into the Deployment Environment
 
 After creating your boot media, boot any UEFI-compatible device into ArkDeploy Toolkit. The same Toolkit-generated WinPE environment can boot from USB/ISO or over the network using the separate [ArkDeploy PXE](https://github.com/ArkDeployDev/ArkDeployPXE/) project. The lightweight Windows PE environment provides everything needed to deploy or capture Windows images, whether you're working from a local drive, USB storage, or an SMB network share.
 
-![Toolkit Menu](docs/images/ArkDeploy_Toolkit_menu.png)
+![Toolkit Menu](docs/images/ArkDeploy_Toolkit_menu.png) 
 
 ### Deploy Windows Image
 
